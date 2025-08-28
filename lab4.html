@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    $(document).ready(function(){
+        loadData();
+    }) //แบบ jquery
+
+    function loadData(){
+        //console.log("my loadData");
+        $.ajax({
+            type:"", // GET ,POST, PUT, DELETE
+            ur:"https://rmuti-webp.xcool-win741-rock.co/_webservice/getCustomersList.php",
+            async:true, // true(ดีฟอลต์) , false
+            data:JSON.stringify(null), // ข้อมูลที่จะส่งไป
+        })
+    } // แบบ javascript ต้องใช้ onload บน body
+
+
+</script>
