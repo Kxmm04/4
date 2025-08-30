@@ -6,10 +6,10 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-    
+    <input style="background-color: rgb(66, 66, 255); color:rgb(255, 255, 255); margin-bottom: 20px; " type="button" value="ค้นหา" onclick="run_1()">
+    <div id="content"></div>
 </body>
 </html>
-
 <script>
     $(document).ready(function(){
         loadData();
@@ -38,6 +38,34 @@
             },
         })
     } // แบบ javascript ต้องใช้ onload บน body
+
+
+function run_1() {
+    $.ajax({
+        type: "GET",
+        url: "https://rmuti-webp.xcool-win741-rock.co/_webservice/getCustomersList.php",
+        success: function(response){
+            let datalist = response.datalist;
+            let str_html = `<table border='1' padding='5' cellspacing='0'width='30%'>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                </tr>`;
+            datalist.forEach(function(item){
+                str_html += `<tr>
+                                <td>${item.cus_id}</td>
+                                <td>${item.cus_name}</td>
+                                <td>${item.cus_username}</td>
+                             </tr>`;
+            });
+             document.getElementById("content").innerHTML = str_html;
+        },
+        error: function(){
+            console.log("load data error");
+        }
+    });
+}
 
 
 </script>
